@@ -1,0 +1,24 @@
+// Example wpad
+
+function FindProxyForURL(url, host) {
+    var lhost = host.toLowerCase();
+    host = lhost;
+    var proxy_internet = "PROXY proxy.example.com:81";
+    var proxy_extra = "PROXY extraproxy.example.com:81";
+    var proxy_none = "DIRECT";
+
+    if(host == "beta.example.com" ||
+        dnsDomainIs(host, ".dev.exmaple.com") ||
+        shExpMatch(host, "1.2.3.*"))
+    {
+        return proxy_none;
+    }
+    else if(host == "extranet.example.com")
+    {
+        return proxy_extra;
+    }
+    else
+    {
+       return proxy_internet;
+    }
+}
